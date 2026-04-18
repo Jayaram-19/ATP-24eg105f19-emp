@@ -7,9 +7,11 @@ import cors from 'cors';
 config();//process .env.PORT,process.env.DB_URL
 
 const app = exp()
+const allowedOrigins = [process.env.FRONTEND_URL, 'https://atp-24eg105f19-emp.vercel.app', 'http://localhost:5173'].filter(Boolean);
+
 //add cors middleware
 app.use(cors({
-  origin:['http://localhost:5173']
+  origin: allowedOrigins
 }))
 app.use(exp.json());
 //forward req to empApp if path starts with /employee-api
